@@ -1,7 +1,7 @@
 build/
 *.DS_Store
 dossier
-test.db
+*.db
 
 # Prerequisites
 *.d
