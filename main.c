@@ -7,7 +7,7 @@ int main(void) {
   person test = {.name = "john",
                  .surname = "doe",
                  .email = "test@example.com",
-                 .phone = "11231231212"};
+                 .phone = "+11231231212"};
 
   sqlite3 *db;
   sqlite3_open("dossier.db", &db);
@@ -17,7 +17,9 @@ int main(void) {
     db_create_people(db);
   }
 
-  db_insert_person(db, &test);
+  if (!db_insert_person(db, &test)) {
+    fprintf(stderr, "insert failed: %s\n", sqlite3_errmsg(db));
+  }
 
   sqlite3_close(db);
 }
