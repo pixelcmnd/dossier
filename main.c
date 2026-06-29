@@ -4,17 +4,17 @@
 #include "person.h"
 
 int main(void) {
-  person test = {
-      .name = "john", .surname = "doe", .phonenumber = "11231231212"};
+  person test = {.name = "john",
+                 .surname = "doe",
+                 .email = "test@example.com",
+                 .phone = "11231231212"};
 
   sqlite3 *db;
   sqlite3_open("dossier.db", &db);
 
-  if (db_verify_table(db)) {
-    printf("exist");
-  } else {
-    // TODO: Create people table in db
-    printf("dosen't exist");
+  // verify if table "people" exist within db
+  if (!db_verify_table(db, "people")) {
+    db_create_people(db);
   }
 
   db_insert_person(db, &test);

@@ -6,7 +6,8 @@
 typedef struct {
   char *name;
   char *surname;
-  char *phonenumber;
+  char *email;
+  char *phone;
 } person;
 
 #endif // !PERSON_H
